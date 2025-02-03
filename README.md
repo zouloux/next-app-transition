@@ -1,6 +1,10 @@
 # Next App Transition
-Main bundle is <picture style="display: inline-block"><source media="(prefers-color-scheme: dark)" srcset="./reports/main-dark.svg"><img src="./reports/main-light.svg"></picture>
-and optional utils is only <picture style="display: inline-block"><source media="(prefers-color-scheme: dark)" srcset="./reports/utils-dark.svg"><img src="./reports/utils-light.svg"></picture>
+
+This React hook help creating smooth transition between all pages on **Next 15+** with **App Router** ( Not compatible with legacy router ).
+This package is about <picture style="display: inline-block"><source media="(prefers-color-scheme: dark)" srcset="./reports/total-dark.svg"><img src="./reports/total-light.svg"></picture>.
+It contains only a hook, you'll have to code your own `PageTransition` component.
+
+See it running here
 
 ## Install
 
@@ -8,20 +12,7 @@ and optional utils is only <picture style="display: inline-block"><source media=
 
 ## Usage
 
-##### Main module
-- `import { ... } from "@zouloux/next-app-transition"`
 
-##### Sub module
-- `import { ... } from "@zouloux/next-app-transition/utils"`
-
-## Build commands
-
-##### Build
-- `npm run build`
-##### Test
-- `npm run test`
-##### Publish
-- `npm run publish`
 
 ---
 ## TSP
