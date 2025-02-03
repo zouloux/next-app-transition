@@ -43,12 +43,12 @@ export function PageTransition({}: {}) {
 	//	with the transition
 	const { routerPush } = usePreventNextRouter({
 		// Called when router wants to change page
-		// It can be triggered from a push-state
+		// It can be triggered from a push-state event
 		transitionHandler: async (state: boolean) => await animatePanel(state),
 		reloadOnSameHref: true,
 	})
 
-	// Listen for all <a href> clicks to override default Next's behavior
+	// Listen for all <a> clicks to override default Next's behavior
 	useAnchorGlobalListener({
 		// User clicks on any internal and relative link
 		relativeHandler(event, href) {
