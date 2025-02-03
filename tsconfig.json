@@ -1,0 +1,37 @@
+{
+	"compilerOptions": {
+		// Compilation level target
+		// If using a bundler in your project it should be the previous or current year
+		"target" : "es2023",
+		// Allow types to be resolved in tests
+		"checkJs": true,
+		"allowJs": true,
+		// TS libs used, include needed lib.
+		// It should contain the target and "DOM" if it runs in the browser
+		// https://www.typescriptlang.org/tsconfig/#lib
+		"lib": ["DOM","es2023"],
+		// Module config, you should not change it
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"skipLibCheck": true,
+		"isolatedModules": false,
+		"allowImportingTsExtensions": false,
+		// Compiler config
+		"strict": true,
+		"useDefineForClassFields" : true,
+		"allowSyntheticDefaultImports": true
+		// ---
+		// Feel free to configure this file for your needs
+		// https://www.typescriptlang.org/tsconfig/
+		// ---
+		// Forbidden props are :
+		// - rootDir
+		// - outDir
+		// - declaration
+		// - noEmitOnError
+		// - pretty
+	},
+	// Compile only from src, avoid looping in dist
+	"exclude": ["node_modules", "dist"],
+	"include": ["src/**/*"],
+}

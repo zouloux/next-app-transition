@@ -1,0 +1,53 @@
+{
+  "name": "@zouloux/next-app-transition",
+  "version": "0.1.0",
+  "type": "module",
+  "author": "Alexis Bouhet",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
+    }
+  },
+  "tsp": {
+    "runtime": "node",
+    "src": "./src",
+    "dist": "./dist",
+    "tests": "./tests",
+    "test-files": [
+      "test.js"
+    ],
+    "tmp": "./tmp",
+    "reports": "./reports",
+    "generate-json-report": false,
+    "generate-svg-report": true
+  },
+  "scripts": {
+    "build": "tsp build",
+    "test": "tsp build --noSizeReport && tsp test --noIntro",
+    "publish": "tsp build && tsp test --noIntro && tsp publish --noIntro"
+  },
+  "devDependencies": {
+    "@reflex-stack/tsp": "0.1.8",
+    "terser": "^5.37.0",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.3"
+  },
+  "dependencies" : {
+    "next": "^15.1.6",
+    "react": "^19.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zouloux/next-app-transition.git"
+  }
+}
