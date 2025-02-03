@@ -13,6 +13,7 @@ export function Link({
 			style={{
 				display: "inline-block",
 				color: "white",
+				whiteSpace: "nowrap",
 				textDecoration: "none",
 				border: "1px solid currentColor",
 				borderRadius: "4px",

@@ -7,7 +7,9 @@ export function MainTemplate({ title }: { title: string }) {
 			<p style={{ marginTop: 20 }}>
 				Page transition demo for Next applications with App router
 			</p>
-			<nav style={{ marginTop: 40, display: "flex", gap: 12 }}>
+			<nav
+				style={{ marginTop: 40, display: "flex", gap: 12, flexWrap: "wrap" }}
+			>
 				<Link href="/">Home page</Link>
 				<Link href="/virtual-page-1">Virtual page 1</Link>
 				<Link href="/virtual-page-2">Virtual page 2</Link>
