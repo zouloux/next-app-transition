@@ -6,3 +6,4 @@ src/
 .github/
 docs/
 demo/
+.stackblitzrc

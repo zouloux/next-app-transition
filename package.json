@@ -32,7 +32,8 @@
   "scripts": {
     "build": "tsp build",
     "test": "tsp build --noSizeReport && tsp test --noIntro",
-    "publish": "tsp build && tsp test --noIntro && tsp publish --noIntro"
+    "publish": "tsp build && tsp test --noIntro && tsp publish --noIntro",
+    "demo": "cd demo && npm run dev"
   },
   "devDependencies": {
     "@reflex-stack/tsp": "0.1.8",
