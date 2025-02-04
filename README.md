@@ -12,7 +12,11 @@ See the demo running [here on StackBlitz](https://stackblitz.com/~/github.com/zo
 
 ## Install
 
-`npm i @zouloux/next-app-transition`
+```bash
+npm i @zouloux/next-app-transition
+```
+
+> Available [on NPM](https://www.npmjs.com/package/@zouloux/next-app-transition)
 
 ## Basic usage
 
@@ -134,18 +138,23 @@ useAnchorGlobalListener({
 
 ## Build and work on the package
 
-```
+Clone 
+```bash
 git clone https://github.com/zouloux/next-app-transition.git
+cd next-app-transition
 ```
 
-##### To run the demo locally
-
-```
+Run the demo
+```bash
 npm run demo
 ```
 
 > This will install npm package and start NextJS
 
+Build the library itself
+```bash
+npm run build
+```
 
 ---
 ## TSP
