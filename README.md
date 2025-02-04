@@ -6,6 +6,8 @@ It contains only a hook, you'll have to code your own `PageTransition` component
 
 ## Demo
 
+![next-app-transition.gif](next-app-transition.gif)
+
 See the demo running [here on StackBlitz](https://stackblitz.com/~/github.com/zouloux/next-app-transition)
 
 ## Install
