@@ -1,6 +1,6 @@
 {
   "name": "@zouloux/next-app-transition",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "author": "Alexis Bouhet",
   "license": "MIT",
@@ -43,7 +43,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.3"
   },
-  "dependencies" : {
+  "dependencies": {
     "next": "^15.1.6",
     "react": "^19.0.0"
   },
