@@ -100,22 +100,22 @@ routerPush("/new-href")
 routerPush("/new-href-with-scroll", { scroll: true })
 // Check if router is locked
 function anotherFunctionSomewhere () {
-    if ( isRouterLocked() ) {
-        // Router is locked prevent something related
-    }
+  if ( isRouterLocked() ) {
+    // Router is locked prevent something related
+  }
 }
 
 // --- TRANSITION STATE CHANGES
 // Be notified when transition state changes
 onNextRouterTransition.add( state => {
-    // "opening" | "opened" | "closing" | "closed"
+  // "opening" | "opened" | "closing" | "closed"
 })
 // The same but in a hook
 useEffect(() => {
-    // Here the emitter returns the remove function for React hooks
-    return onNextRouterTransition.add( state => {
-        // ...
-    })
+  // Here the emitter returns the remove function for React hooks
+  return onNextRouterTransition.add( state => {
+    // ...
+  })
 }, [dependency])
 
 // --- ANCHOR GLOBAL LISTENER
@@ -125,7 +125,7 @@ useAnchorGlobalListener({
     // Do not follow link with original Next router
     event.preventDefault()
     // Use patched routerPush to change page with custom transition
-     routerPush(href)
+	routerPush(href)
   },
   hashHandler: ( event: Event, hash: string ) => {
     // Called when an hash link <a href="#hash"> is clicked,

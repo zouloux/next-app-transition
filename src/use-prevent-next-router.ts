@@ -73,6 +73,7 @@ export function usePreventNextRouter(options: TUsePreventNextRouterOptions) {
 	async function routerPush(
 		href?: string,
 		navigateOptions?: NavigateOptions,
+		doTransition:boolean = true,
 	): Promise<boolean> {
 		// Lock
 		if (isLocked.current) {
@@ -88,6 +89,16 @@ export function usePreventNextRouter(options: TUsePreventNextRouterOptions) {
 			location.reload()
 			return false
 		}
+		const routerDestinationHref = href ?? location.pathname
+		const routerNavigateOptions = {
+			scroll: false,
+			...navigateOptions,
+		}
+		// Do not run transition
+		if ( !doTransition ) {
+			router.push(routerDestinationHref, routerNavigateOptions)
+			return true;
+		}
 		isLocked.current = true
 		// Transition ( hide UI )
 		onNextRouterTransition.dispatch("opening")
@@ -95,10 +106,7 @@ export function usePreventNextRouter(options: TUsePreventNextRouterOptions) {
 		onNextRouterTransition.dispatch("opened")
 		// Send router push for Next
 		if (!reloadingSamePath || reloadOnSameHref) {
-			router.push(href ?? location.pathname, {
-				scroll: false,
-				...navigateOptions,
-			})
+			router.push(routerDestinationHref, routerNavigateOptions)
 			// Wait for the router's pathname to change to transition out
 			pathNameChangeHandler.current?.()
 			if (hasPendingRouterPush.current) {
