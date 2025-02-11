@@ -8,11 +8,11 @@ import { getParentNodeOfTag, on } from "./utils/index.js"
 
 type TAnchorGlobalListenerOptions = {
 	// User clicks on any internal and relative link
-	relativeHandler?: (event: Event, href: string) => void
+	relativeHandler	?: (event: Event, href: string, target: Element) => void
 	// User clicks on any internal hash link
-	hashHandler?: (event: Event, hash: string) => void
+	hashHandler			?: (event: Event, hash: string, target: Element) => void
 	// React dependencies to update scope
-	dependencies?: any[]
+	dependencies		?: any[]
 }
 
 export function useAnchorGlobalListener(options: TAnchorGlobalListenerOptions) {
@@ -34,13 +34,13 @@ export function useAnchorGlobalListener(options: TAnchorGlobalListenerOptions) {
 			const href = target.getAttribute("href") ?? ""
 			// Do not follow local anchors
 			if (href.startsWith("#")) {
-				options.hashHandler?.(event, href)
+				options.hashHandler?.(event, href, target)
 				return
 			}
 			// Not starting with slash ? Not a local relative link.
 			if (href.indexOf("/") !== 0) return
 			// Do not follow link with browser but follow it with router to keep page
-			options.relativeHandler?.(event, href)
+			options.relativeHandler?.(event, href, target)
 		})
 	}, options.dependencies)
 }

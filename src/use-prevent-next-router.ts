@@ -21,10 +21,13 @@ export const onNextRouterTransition = emitter<[TTransitionSteps]>()
 const removeTrailingSlash = (str: string) =>
 	str.lastIndexOf("/") === str.length - 1 ? str.slice(0, str.length - 1) : str
 
+type TPopStateAction = "transition" | "next" | "prevent"
+
 type TUsePreventNextRouterOptions = {
 	transitionHandler: (state: boolean) => Promise<any>
 	reloadOnSameHref?: boolean
 	routerPushWhileLocked?: (href?: string) => void
+	doTransitionOnPopstate?: (newHref:string, oldHref:string) => TPopStateAction
 }
 
 /**
@@ -33,6 +36,7 @@ type TUsePreventNextRouterOptions = {
  * @param options.transitionHandler With state of transition ( true = hide UI / false = show UI )
  * @param options.reloadOnSameHref If pushed href is the same as the current one, force a window reload
  * @param options.routerPushWhileLocked Called when router is pushed while transition is locked.
+ * @param options.doTransitionOnPopstate Define and return prevent a page transition
  */
 export function usePreventNextRouter(options: TUsePreventNextRouterOptions) {
 	const { transitionHandler } = options
@@ -125,12 +129,24 @@ export function usePreventNextRouter(options: TUsePreventNextRouterOptions) {
 		// console.log( newPathname, currentPathname.current, newPathname === currentPathname.current );
 		if (newPathname === currentPathname.current) return
 		currentPathname.current = newPathname
+		// Get action to do on pop state from options or default behavior ( run custom transition )
+		const action:TPopStateAction = (
+			options.doTransitionOnPopstate?.(newPathname, currentPathname.current)
+			?? "transition"
+		)
+		// Use native next transition
+		if ( action === "next" )
+			return;
 		// Stop original route change
-		event.preventDefault()
-		event.stopPropagation()
-		event.stopImmediatePropagation()
+		if ( action === "prevent" || action === "transition" ) {
+			event.preventDefault()
+			event.stopPropagation()
+			event.stopImmediatePropagation()
+		}
 		// Change route with transition
-		await routerPush()
+		if ( action === "transition" ) {
+			await routerPush()
+		}
 	}
 
 	useLayoutEffect(

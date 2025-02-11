@@ -35,10 +35,10 @@ export function PageTransition () {
     // It can be triggered from a push-state event
     transitionHandler: async (state: boolean) => {
       // Code your async transition here with state.
-	  // If true, enable transition panel, if false, disable transition panel
-	  // Please note that router is locked while handler's promise is not complete
-	  // Ex :
-	  await animateTransition( state ) // .4s animation
+      // If true, enable transition panel, if false, disable transition panel
+      // Please note that router is locked while handler's promise is not complete
+      // Ex :
+      await animateTransition( state ) // .4s animation
     }
   })
   return <div>{/* transition elements */}</div>
@@ -100,22 +100,22 @@ routerPush("/new-href")
 routerPush("/new-href-with-scroll", { scroll: true })
 // Check if router is locked
 function anotherFunctionSomewhere () {
-	if ( isRouterLocked() ) {
-		// Router is locked prevent something related
-	}
+    if ( isRouterLocked() ) {
+        // Router is locked prevent something related
+    }
 }
 
 // --- TRANSITION STATE CHANGES
 // Be notified when transition state changes
 onNextRouterTransition.add( state => {
-	// "opening" | "opened" | "closing" | "closed"
+    // "opening" | "opened" | "closing" | "closed"
 })
 // The same but in a hook
 useEffect(() => {
-	// Here the emitter returns the remove function for React hooks
-	return onNextRouterTransition.add( state => {
-		// ...
-	})
+    // Here the emitter returns the remove function for React hooks
+    return onNextRouterTransition.add( state => {
+        // ...
+    })
 }, [dependency])
 
 // --- ANCHOR GLOBAL LISTENER
@@ -129,7 +129,7 @@ useAnchorGlobalListener({
   },
   hashHandler: ( event: Event, hash: string ) => {
     // Called when an hash link <a href="#hash"> is clicked,
-	// same behavior but for hashes
+    // same behavior but for hashes
   },
   // React dependencies for those handlers, default is []
   dependencies: [/*...*/]
